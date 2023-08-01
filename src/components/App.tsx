@@ -6,6 +6,12 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+function add(num1: number, num2: number): number {
+    return num1 + num2;
+}
+
+add(1, 1);
+
   return (
     <>
       <div>
