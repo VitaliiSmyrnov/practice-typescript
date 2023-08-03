@@ -1,0 +1,76 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { ErrorMessage } from "components";
+
+import { movieApi } from "services/api";
+import { Sort } from "utils";
+
+import { List } from "./Cast.styled";
+
+import NoPhoto from "assets/no-photo.jpg";
+
+const Cast = () => {
+  const [cast, setCast] = useState([]);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
+
+  const { movieId } = useParams();
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    (async () => {
+      setStatus("pending");
+
+      try {
+        const data = await movieApi.fetchMovieCast(movieId, controller.signal);
+
+        setCast(Sort.getSortedCast(data));
+        setStatus("resolved");
+      } catch (error) {
+        setError(error.message);
+        setStatus("rejected");
+      }
+    })();
+
+    return () => {
+      controller.abort();
+    };
+  }, [movieId]);
+
+  return (
+    <>
+      {status === "pending" && <p>Loading subpage...</p>}
+
+      {status === "resolved" && cast.length !== 0 && (
+        <List>
+          {cast?.map(({ id, profile_path, original_name, character }) => {
+            const photo =
+              profile_path !== null
+                ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                : NoPhoto;
+
+            return (
+              <li key={id}>
+                <img src={photo} alt={original_name} />
+                <p>{original_name}</p>
+                <p>Character: {character}</p>
+              </li>
+            );
+          })}
+        </List>
+      )}
+
+      {status === "resolved" && cast.length === 0 && (
+        <ErrorMessage text="We don't have any cast for this movie" />
+      )}
+
+      {status === "rejected" && (
+        <ErrorMessage error={error} text="Sorry, something wrong. Try again." />
+      )}
+    </>
+  );
+};
+
+export default Cast;
