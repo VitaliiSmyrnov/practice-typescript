@@ -1,9 +1,15 @@
-import PropTypes from "prop-types";
+import React, {ReactNode} from "react";
+
 import { HiArrowSmLeft } from "react-icons/hi";
 
 import { LinkGoBack } from "./BackLink.styled";
 
-export const BackLink = ({ to, children }) => {
+interface IProps {
+  to: {pathname: string},
+  children: ReactNode
+}
+
+export const BackLink: React.FC<IProps> = ({ to, children }) => {
   return (
     <LinkGoBack to={to}>
       <HiArrowSmLeft />
@@ -12,9 +18,3 @@ export const BackLink = ({ to, children }) => {
   );
 };
 
-BackLink.propTypes = {
-  to: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }),
-  children: PropTypes.node,
-};

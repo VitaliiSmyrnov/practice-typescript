@@ -8,13 +8,13 @@ import "./App.css";
 
 import { SharedLayout, NotFound } from "src/components";
 
-const HomePage = lazy(() => import("pages/HomePage/HomePage"));
-const MoviesPage = lazy(() => import("pages/MoviesPage/MoviesPage"));
+const HomePage = lazy(() => import("src/pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("src/pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
-  import("pages/MovieDetailsPage/MovieDetailsPage")
+  import("src/pages/MovieDetailsPage/MovieDetailsPage")
 );
-const Cast = lazy(() => import("components/Cast/Cast"));
-const Reviews = lazy(() => import("components/Reviews/Reviews"));
+const Cast = lazy(() => import("src/components/Cast/Cast"));
+const Reviews = lazy(() => import("src/components/Reviews/Reviews"));
 
 function App() {
   return (

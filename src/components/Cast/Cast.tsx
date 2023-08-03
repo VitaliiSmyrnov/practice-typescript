@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { ErrorMessage } from "components";
+import { ErrorMessage } from "src/components";
 
-import { movieApi } from "services/api";
-import { Sort } from "utils";
+import { movieApi } from "src/services/api";
+import { Sort } from "src/utils";
 
 import { List } from "./Cast.styled";
 
-import NoPhoto from "assets/no-photo.jpg";
+import NoPhoto from "src/assets/no-photo.jpg";
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
