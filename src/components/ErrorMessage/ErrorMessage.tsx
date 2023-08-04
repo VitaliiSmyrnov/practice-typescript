@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
+import React from 'react';
 
-export const ErrorMessage = ({ text, error }) => {
+interface IProps {
+  text: string,
+  error: string
+}
+
+export const ErrorMessage: React.FC<IProps> = ({ text, error }) => {
   return (
     <>
       {error && <p>{`Error message: ${error}`}</p>}
       {text && <p>{text}</p>}
     </>
   );
-};
-
-ErrorMessage.propTypes = {
-  text: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
 };
