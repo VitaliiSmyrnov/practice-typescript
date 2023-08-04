@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import React from "react";
 
 import {
   Container,
@@ -6,7 +6,18 @@ import {
   ImageWrapper,
 } from "./MovieInfo.styled";
 
-export const MovieInfo = ({ item = {} }) => {
+interface IProps {
+  item: {
+    poster_path: string,
+    title: string,
+    release_date: string,
+    vote_average: number,
+    overview: string,
+    genres: {name: string}[]
+  }
+}
+
+export const MovieInfo: React.FC<IProps> = ({ item = {} }) => {
   const {
     poster_path,
     title,
@@ -40,17 +51,3 @@ export const MovieInfo = ({ item = {} }) => {
   );
 };
 
-MovieInfo.propTypes = {
-  item: PropTypes.shape({
-    poster_path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      })
-    ),
-  }),
-};
