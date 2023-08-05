@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { MovieList } from "components";
+import { MovieList } from "src/components";
 
-import { movieApi } from "services/api";
+import { movieApi } from "src/services/api";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -21,6 +21,7 @@ const HomePage = () => {
         setMovies(data.results);
         setStatus("resolved");
       } catch (error) {
+        
         setError(error.message);
         setStatus("rejected");
       }

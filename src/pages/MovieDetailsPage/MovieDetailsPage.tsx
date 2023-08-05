@@ -1,8 +1,8 @@
 import { Suspense, useState, useEffect, useRef } from "react";
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
-import { BackLink, MovieInfo } from "components";
-import { movieApi } from "services/api";
+import { BackLink, MovieInfo } from "src/components";
+import { movieApi } from "src/services/api";
 
 import { AdditionalWrapper } from "./MovieDetailsPage.styled";
 

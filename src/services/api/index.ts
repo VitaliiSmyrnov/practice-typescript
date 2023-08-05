@@ -1,1 +1,1 @@
-export * as movieApi from "services/api/movieApi";
+export * as movieApi from "src/services/api/movieApi";

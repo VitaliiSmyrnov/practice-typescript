@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { ErrorMessage, MovieList, SearchBar } from "components";
+import { ErrorMessage, MovieList, SearchBar } from "src/components";
 
-import { movieApi } from "services/api";
-import { Sort } from "utils";
+import { movieApi } from "src/services/api";
+import { Sort } from "src/utils";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);

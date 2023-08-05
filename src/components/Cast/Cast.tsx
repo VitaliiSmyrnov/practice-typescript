@@ -10,6 +10,10 @@ import { List } from "./Cast.styled";
 
 import NoPhoto from "src/assets/no-photo.jpg";
 
+interface CustomError {
+  message: string
+}
+
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [status, setStatus] = useState("idle");
@@ -28,7 +32,7 @@ const Cast = () => {
 
         setCast(Sort.getSortedCast(data));
         setStatus("resolved");
-      } catch (error) {
+      } catch (error: CustomError) {
         setError(error.message);
         setStatus("rejected");
       }
