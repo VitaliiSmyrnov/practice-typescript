@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { BiHomeHeart, BiSearch } from "react-icons/bi";
 
-import PageNotFoundImage from "assets/icons/404_Error_with_cat.svg";
+import PageNotFoundImage from "src/assets/icons/404_Error_with_cat.svg";
 
 import { Container, ImageWrapper, LinkWrapper } from "./NotFound.styled";
 

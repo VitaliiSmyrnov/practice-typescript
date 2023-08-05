@@ -1,7 +1,12 @@
-import PropTypes from "prop-types";
+import React from 'react';
+
 import { toast } from "react-toastify";
 
-export const SearchBar = ({ onSubmit }) => {
+interface IProps {
+  onSubmit: () => void
+}
+
+export const SearchBar: React.FC<IProps> = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +28,3 @@ export const SearchBar = ({ onSubmit }) => {
   );
 };
 
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

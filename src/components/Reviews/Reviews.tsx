@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { movieApi } from "services/api";
-import { ErrorMessage } from "components";
+import { movieApi } from "src/services/api";
+import { ErrorMessage } from "src/components";
 import { List } from "./Reviews.styled";
 
 const Reviews = () => {
@@ -23,7 +23,6 @@ const Reviews = () => {
           movieId,
           controller.signal
         );
-
 
         setReviews(data);
         setStatus("resolved");
