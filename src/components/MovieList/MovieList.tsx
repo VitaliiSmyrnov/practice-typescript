@@ -1,10 +1,21 @@
-import PropTypes from "prop-types";
+import React from 'react';
 
-import { MovieItem } from "components";
+import { MovieItem } from "src/components";
 
 import { List, Title } from "./MovieList.styled";
 
-export const MovieList = ({ title, items = [] }) => {
+interface IItem {
+  id: number,
+  title: string,
+  poster_path: string
+}
+
+interface IProps {
+  title: string,
+  items?: IItem[]
+}
+
+export const MovieList: React.FC<IProps> = ({ title, items = [] }) => {
   return (
     <>
       {title && <Title>{title}</Title>}
@@ -17,11 +28,3 @@ export const MovieList = ({ title, items = [] }) => {
   );
 };
 
-MovieList.propTypes = {
-  title: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ),
-};
