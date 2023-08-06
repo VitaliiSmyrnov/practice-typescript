@@ -14,9 +14,16 @@ interface CustomError {
   message: string
 }
 
+interface ICast {
+  id: string, 
+  profile_path: string | null, 
+  original_name: string, 
+  character: string
+}
+
 const Cast = () => {
-  const [cast, setCast] = useState([]);
-  const [status, setStatus] = useState("idle");
+  const [cast, setCast] = useState<ICast[]>([]);
+  const [status, setStatus] = useState<string>("idle");
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
