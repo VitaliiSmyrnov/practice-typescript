@@ -3,7 +3,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ImageWrapper, Title } from "./MovieItem.styled";
 
-import NoPoster from "assets/no-poster.jpg";
+import NoPoster from "src/assets/no-poster.jpg";
 
 interface IProps {
   item: {

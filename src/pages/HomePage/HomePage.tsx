@@ -6,7 +6,7 @@ import { movieApi } from "src/services/api";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState<string>("idle");
   const [, setError] = useState(null);
 
   useEffect(() => {
