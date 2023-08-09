@@ -11,7 +11,7 @@ import { List } from "./Cast.styled";
 import NoPhoto from "src/assets/no-photo.jpg";
 
 interface CustomError {
-  message: string
+  message?: string
 }
 
 interface ICast {
