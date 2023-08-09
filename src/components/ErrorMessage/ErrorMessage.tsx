@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface IProps {
-  text: string,
-  error: string
+  text?: string,
+  error?: string
 }
 
 export const ErrorMessage: React.FC<IProps> = ({ text, error }) => {
