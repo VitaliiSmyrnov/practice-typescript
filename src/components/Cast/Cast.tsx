@@ -10,10 +10,6 @@ import { List } from "./Cast.styled";
 
 import NoPhoto from "src/assets/no-photo.jpg";
 
-interface CustomError {
-  message?: string
-}
-
 interface ICast {
   id: string, 
   profile_path: string | null, 
@@ -23,8 +19,8 @@ interface ICast {
 
 const Cast = () => {
   const [cast, setCast] = useState<ICast[]>([]);
-  const [status, setStatus] = useState<string>("idle");
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState<null | string>(null);
 
   const { movieId } = useParams();
 
@@ -39,8 +35,10 @@ const Cast = () => {
 
         setCast(Sort.getSortedCast(data));
         setStatus("resolved");
-      } catch (error: CustomError) {
-        setError(error.message);
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          setError(e.message);
+        }
         setStatus("rejected");
       }
     })();
