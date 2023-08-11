@@ -18,7 +18,7 @@ interface IState {
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState<IState>({});
   const [status, setStatus] = useState("idle");
-  const [, setError] = useState(null);
+  const [, setError] = useState<string | null>(null);
 
   const { movieId } = useParams();
   const location = useLocation();
@@ -41,9 +41,11 @@ const MovieDetailsPage = () => {
 
         setMovie(data);
         setStatus("resolved");
-      } catch (error) {
-        setError(error.message);
-        setStatus("rejected");
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          setError(e.message);
+          setStatus("rejected");
+        }
       }
     })();
 

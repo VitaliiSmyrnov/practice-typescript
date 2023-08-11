@@ -9,7 +9,7 @@ import { Sort } from "src/utils";
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState("idle");
-  const [, setError] = useState(null);
+  const [, setError] = useState<string | null>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
@@ -27,9 +27,11 @@ const MoviesPage = () => {
 
         setMovies(Sort.getSortedMovies(data));
         setStatus("resolved");
-      } catch (error) {
-        setError(error.message);
-        setStatus("rejected");
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          setError(e.message);
+          setStatus("rejected");
+        }
       }
     })();
 
