@@ -7,7 +7,7 @@ import { movieApi } from "src/services/api";
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState<string>("idle");
-  const [, setError] = useState(null);
+  const [, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -20,10 +20,11 @@ const HomePage = () => {
 
         setMovies(data.results);
         setStatus("resolved");
-      } catch (error) {
-        
-        setError(error.message);
-        setStatus("rejected");
+      } catch (e: unknown) {
+        if (e instanceof Error) {
+          setError(e.message);
+          setStatus("rejected");
+        }
       }
     })();
 

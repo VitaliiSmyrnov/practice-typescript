@@ -11,7 +11,7 @@ interface IItem {
 }
 
 interface IProps {
-  title: string,
+  title?: string,
   items?: IItem[]
 }
 
