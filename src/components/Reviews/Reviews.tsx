@@ -8,7 +8,7 @@ import { List } from "./Reviews.styled";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   const { movieId } = useParams();
 
@@ -26,10 +26,11 @@ const Reviews = () => {
 
         setReviews(data);
         setStatus("resolved");
-      } catch (error) {
- 
-        setError(error.message);
-        setStatus("rejected");
+      } catch (e: unknown) {
+     if (e instanceof Error) {
+       setError(e.message);
+       setStatus("rejected");
+      }
       }
     })();
 
@@ -57,7 +58,7 @@ const Reviews = () => {
         <ErrorMessage text="We don't have any reviews for this movie" />
       )}
 
-      {status === "rejected" && (
+      {status === "rejected" && error !== null && (
         <ErrorMessage error={error} text="Sorry, something wrong. Try again." />
       )}
     </>

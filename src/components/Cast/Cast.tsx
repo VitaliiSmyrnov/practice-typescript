@@ -75,7 +75,7 @@ const Cast = () => {
         <ErrorMessage text="We don't have any cast for this movie" />
       )}
 
-      {status === "rejected" && (
+      {status === "rejected" && error !== null && (
         <ErrorMessage error={error} text="Sorry, something wrong. Try again." />
       )}
     </>
