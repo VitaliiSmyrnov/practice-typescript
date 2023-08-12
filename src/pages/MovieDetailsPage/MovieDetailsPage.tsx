@@ -6,17 +6,19 @@ import { movieApi } from "src/services/api";
 
 import { AdditionalWrapper } from "./MovieDetailsPage.styled";
 
-interface IState {
-    poster_path?: string,
-    title?: string,
-    release_date?: string,
-    vote_average?: number,
-    overview?: string,
-    genres?: {name: string}[]
-}
+import {IMovie} from 'src/models/IMovie'
+
+// interface IState {
+//     poster_path?: string,
+//     title?: string,
+//     release_date?: string,
+//     vote_average?: number,
+//     overview?: string,
+//     genres?: {name: string}[]
+// }
 
 const MovieDetailsPage = () => {
-  const [movie, setMovie] = useState<IState>({});
+  const [movie, setMovie] = useState<IMovie>({});
   const [status, setStatus] = useState("idle");
   const [, setError] = useState<string | null>(null);
 

@@ -6,15 +6,10 @@ import {
   ImageWrapper,
 } from "./MovieInfo.styled";
 
+import { IMovie } from "src/models/IMovie";
+
 interface IProps {
-  item: {
-    poster_path?: string,
-    title?: string,
-    release_date?: string,
-    vote_average?: number,
-    overview?: string,
-    genres?: {name: string}[]
-  }
+  item: IMovie
 }
 
 export const MovieInfo: React.FC<IProps> = ({ item = {} }) => {

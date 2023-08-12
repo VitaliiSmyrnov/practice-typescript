@@ -3,10 +3,17 @@ import { useParams } from "react-router-dom";
 
 import { movieApi } from "src/services/api";
 import { ErrorMessage } from "src/components";
+
 import { List } from "./Reviews.styled";
 
+interface IReview {
+  id: string;
+  author: string;
+  content: string;
+}
+
 const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<IReview[]>([]);
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -27,10 +34,10 @@ const Reviews = () => {
         setReviews(data);
         setStatus("resolved");
       } catch (e: unknown) {
-     if (e instanceof Error) {
-       setError(e.message);
-       setStatus("rejected");
-      }
+        if (e instanceof Error) {
+          setError(e.message);
+          setStatus("rejected");
+        }
       }
     })();
 
